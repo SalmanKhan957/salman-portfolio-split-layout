@@ -1,0 +1,127 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { SITE, SOCIALS } from "@/lib/content";
+import { Phone, Linkedin, Mail, Send } from "lucide-react";
+
+const WHATSAPP_NUMBER = "923205299646"; // Pakistan number (no +)
+
+export function ContactBlock() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState(""); // optional
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const waLink = useMemo(() => {
+    const text =
+      `Hi Salman,%0A%0A` +
+      `Name: ${name || "-"}%0A` +
+      `Email: ${email || "-"}%0A` +
+      `Subject: ${subject || "-"}%0A%0A` +
+      `${message || ""}`;
+
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(decodeURIComponent(text))}`;
+  }, [name, email, subject, message]);
+
+  const onSend = () => {
+    if (!name.trim() || !message.trim()) return;
+    window.open(waLink, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* Left card */}
+      <div className="rounded-3xl border border-ink-200 bg-ink-50 p-7 shadow-soft">
+        <h3 className="text-4xl font-semibold tracking-tight text-ink-950">
+          Contact Me
+        </h3>
+
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-700">
+          I read every message. If you’re hiring, collaborating, or want help shipping an AI product, send me a note.
+        </p>
+
+        <p className="mt-8 text-xs text-ink-500">Does not send emails automatically.</p>
+
+        <div className="mt-3">
+          <p className="text-sm font-semibold text-ink-900">Write me on my social networks</p>
+          <div className="mt-4 flex items-center gap-3">
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-ink-900 text-white hover:bg-ink-800 transition"
+              aria-label="WhatsApp"
+              title="WhatsApp"
+            >
+              <Phone className="h-5 w-5" />
+            </a>
+
+            <a
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-ink-900 border border-ink-200 hover:bg-ink-100 transition"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+
+            <a
+              href={`mailto:${SITE.email}`}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-ink-900 border border-ink-200 hover:bg-ink-100 transition"
+              aria-label="Email"
+              title="Email"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Right form panel */}
+      <div className="rounded-3xl bg-ink-950 p-7 text-white shadow-soft">
+        <h3 className="text-xl font-semibold">Send Me A Message</h3>
+
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Name *"
+            className="h-12 rounded-2xl bg-white/10 px-4 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
+          />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email Address (optional)"
+            className="h-12 rounded-2xl bg-white/10 px-4 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
+          />
+        </div>
+
+        <input
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          placeholder="Subject"
+          className="mt-4 h-12 w-full rounded-2xl bg-white/10 px-4 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
+        />
+
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Message *"
+          rows={7}
+          className="mt-4 w-full rounded-2xl bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
+        />
+
+        <button
+          onClick={onSend}
+          disabled={!name.trim() || !message.trim()}
+          className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-red-700 px-6 py-3 text-sm font-semibold hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
+        >
+          <Send className="h-4 w-4" />
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}

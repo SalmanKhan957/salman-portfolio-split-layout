@@ -1,0 +1,25 @@
+[
+  {
+    "company": "Entropic",
+    "title": "AI Developer",
+    "location": "Islamabad, Pakistan",
+    "start": "2024-10",
+    "end": "Present",
+    "highlights": [
+      "Designed, deployed, and fine-tuned ML models for NLP, classification, and generative AI for production use cases.",
+      "Engineered end-to-end data pipelines for preprocessing, cleaning, and transforming large datasets for training and inference.",
+      "Built and deployed RAG pipelines using embeddings, vector search, and LLMs for document intelligence and retrieval.",
+      "Developed FastAPI/Flask APIs and containerized services with Docker on Azure/GCP."
+    ]
+  },
+  {
+    "company": "Solar Supplies & Services SMC",
+    "title": "Trainee Engineer",
+    "location": "Lahore, Pakistan",
+    "start": "2023-05",
+    "end": "2023-07",
+    "highlights": [
+      "Managed projects using MS Project under the Operations Manager."
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "Programming": ["Python", "React JS","Node JS", "Tailwind", "SQL"],
+  "APIs": ["REST APIs", "FastAPI", "Flask", "Postman"],
+  "ML": ["PyTorch", "TensorFlow", "Keras", "Scikit-learn", "Hugging Face"],
+  "Data": ["Pandas", "NumPy"],
+  "Cloud": ["AWS", "GCP", "Azure"],
+  "Tooling": ["Docker", "Git", "Selenium"],
+  "Databases": ["Supabase", "PostgreSQL"],
+  "Soft Skills": ["Logical reasoning", "Collaboration"],
+  "Languages": ["English (Fluent)"]
+}

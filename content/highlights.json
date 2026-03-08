@@ -1,0 +1,27 @@
+[
+  {
+    "label": "70% faster email templates",
+    "note": "GluonAI",
+    "type": "metric"
+  },
+  {
+    "label": "40+ portals automated",
+    "note": "Tenderz",
+    "type": "scale"
+  },
+  {
+    "label": "1,000+ docs/day pipeline",
+    "note": "Tenderz",
+    "type": "throughput"
+  },
+  {
+    "label": "88% relevance score",
+    "note": "RAG QA",
+    "type": "quality"
+  },
+  {
+    "label": "82% accuracy / 85% sensitivity",
+    "note": "EEG",
+    "type": "benchmark"
+  }
+]

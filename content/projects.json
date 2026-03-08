@@ -1,0 +1,385 @@
+[
+  {
+    "slug": "gluon-ai",
+    "title": "GluonAI",
+    "period": "Apr 2025 – Jul 2025",
+    "tags": [
+      "GenAI",
+      "Full-stack",
+      "SaaS"
+    ],
+    "proof": "70% reduction in email template creation time.",
+    "oneLiner": "AI-powered email marketing platform with campaign management, an editor, and generation of on-brand content + HTML designs.",
+    "stack": [
+      "Next.js 14",
+      "Tailwind",
+      "Supabase",
+      "PostgreSQL",
+      "Stripe",
+      "FastAPI",
+      "Docker",
+      "OpenAI"
+    ],
+    "caseStudy": {
+      "overview": "GluonAI is a full-stack email marketing platform that helps teams generate email campaigns faster. It pairs a Next.js web app (campaigns, editor, assets, subscriptions) with a FastAPI service that performs market-research style analysis and generates structured email content and responsive HTML designs.",
+      "problem": "Email campaigns are repetitive and time-consuming: marketers need subject lines, intros, body copy, CTAs, and a layout — all consistent with the brand. Manual workflows slow iteration and create inconsistency across campaigns.",
+      "solution": "I built the product end-to-end: a Next.js application for campaign lifecycle and editing, plus a FastAPI backend that generates multiple variations of email content and produces HTML email designs (including image-aware layout decisions).",
+      "architecture": [
+        "Next.js app → collects brand tone + product information + assets (Supabase Auth/DB/Storage).",
+        "AI text endpoint → returns structured variants (subject, intro, body, CTAs).",
+        "AI design endpoint → generates mobile-friendly HTML template and places images based on analysis.",
+        "Stripe tiers + webhooks → enforce limits and subscription access."
+      ],
+      "techStack": [
+        "Frontend: Next.js 14 (App Router), Tailwind CSS, shadcn/ui, Zustand",
+        "Backend: FastAPI + Pydantic + OpenAI client (GPT-4o-2024-11-20)",
+        "Data/Auth/Storage: Supabase (PostgreSQL, Auth, Storage)",
+        "Payments: Stripe subscriptions + webhooks",
+        "Infra: Docker (containerized backend), CORS allowlist for prod + local origins"
+      ],
+      "keyDecisions": [
+        "Generated structured content blocks (subject/intro/body/CTA) to keep outputs predictable and editable.",
+        "Separated 'text generation' from 'design generation' to reduce coupling and simplify debugging.",
+        "Tier-based limits aligned compute cost with pricing, enforced server-side via Stripe subscription state.",
+        "Used image analysis to improve layout choices and avoid broken email composition."
+      ],
+      "results": [
+        "70% reduction in email template creation time.",
+        "Generated multiple subject/intro/body/CTA variants per request for faster iteration.",
+        "Delivered responsive HTML designs with image-aware layout generation."
+      ],
+      "links": [
+        {
+          "label": "GluonAI",
+          "href": "https://app.getgluon.ai/login"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/Entropic-Technologies/Gluon"
+        }
+      ],
+      "improveNext": [
+        "Add an evaluation harness (quality + brand-consistency scoring) and regression tests for prompts.",
+        "Introduce caching + streaming for better perceived speed and lower repeat costs.",
+        "Add observability: tracing per generation, error budgets, and cost dashboards."
+      ]
+    }
+  },
+  {
+    "slug": "tenderz-scraper",
+    "title": "Tenderz Scraper",
+    "period": "Jun 2025 – Oct 2025",
+    "tags": [
+      "Scraping",
+      "Automation",
+      "LLM"
+    ],
+    "proof": "40+ procurement platforms supported with multi-format document extraction and structured outputs.",
+    "oneLiner": "Modular tender scraping + AI extraction suite: download, validate, chunk, and convert tender docs into CSV/JSON reports.",
+    "stack": [
+      "Python",
+      "Selenium",
+      "PyMuPDF",
+      "python-docx",
+      "openpyxl",
+      "pandas",
+      "OpenAI API"
+    ],
+    "caseStudy": {
+      "overview": "Tenderz is a two-part system: (1) Selenium-based scrapers that collect tenders and download documents across multiple procurement platforms, and (2) an AI algorithm suite that processes those documents (PDF/DOCX/DOC/XLSX/CSV), chunks large files, and extracts structured tender information.",
+      "problem": "Tender data is fragmented across many portals and often buried behind dynamic UIs. The documents are inconsistent in format and structure, and manual processing doesn’t scale.",
+      "solution": "I built a modular pipeline: scrapers per platform + a standardized processing and AI extraction workflow that produces structured outputs (CSV/JSON) and formatted reports for decision-making.",
+      "architecture": [
+        "Scraper modules (per site) → navigate dynamic pages, download documents, export baseline CSV.",
+        "File processing pipeline → discover docs → extract text (PDF/DOCX/DOC/XLSX/CSV) → clean → chunk → validate.",
+        "AI analysis → GPT-based extraction on chunks → consolidate results → export JSON + formatted TXT report."
+      ],
+      "techStack": [
+        "Scraping: Python + Selenium (headless capable) + webdriver-manager",
+        "Text extraction: PyMuPDF (PDF), python-docx + COM automation for DOC→DOCX (pywin32), pandas/openpyxl (XLSX/CSV)",
+        "AI extraction: OpenAI API with configurable max chunk size (e.g., 80,000 chars) and consolidation logic",
+        "Outputs: standardized CSV exports, JSON tender summaries, formatted TXT reports",
+        "Deployment: Azure VE"
+      ],
+      "keyDecisions": [
+        "Portal-specific scraper modules to isolate breakage when sites change.",
+        "Chunk-based processing to handle large tenders and control token/cost boundaries.",
+        "Validation + dedupe to reduce noisy data and prevent downstream errors.",
+        "Multi-format extraction support so procurement workflows don’t depend on a single file type."
+      ],
+      "results": [
+        "40+ procurement platforms supported (extensible module structure).",
+        "Supports PDF/DOCX/DOC/XLSX/CSV document ingestion with standardized outputs."
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/Entropic-Technologies/TENDERS-PIPELINE-AZURE-SEPTEMBER-2025"
+        }
+      ],
+      "improveNext": [
+        "Move brittle selectors toward self-healing strategies (visual + semantic locators).",
+        "Add queue-based orchestration (e.g., Celery/Redis) for parallelism and backpressure.",
+        "Introduce extraction evaluation sets and automated diffing for regression control."
+      ]
+    }
+  },
+  {
+    "slug": "rag-document-qa",
+    "title": "RAG System for Document QA",
+    "period": "Oct 2025 – Dec 2025",
+    "tags": [
+      "RAG",
+      "NLP",
+      "Search"
+    ],
+    "proof": "88% answer relevance score (define methodology).",
+    "oneLiner": "Local-first document QA with embeddings + vector retrieval and grounded LLM answering.",
+    "stack": [
+      "Python",
+      "Embeddings",
+      "Vector search",
+      "Local LLMs"
+    ],
+    "caseStudy": {
+      "overview": "A retrieval-augmented generation (RAG) system that answers questions grounded in a document set. It indexes documents into embeddings, retrieves the most relevant chunks, and generates answers constrained to retrieved context.",
+      "problem": "Teams lose time searching long documents. Keyword search misses paraphrases, and pure LLM answers hallucinate without grounding.",
+      "solution": "I implemented an end-to-end RAG pipeline: document parsing → chunking → embeddings → cosine-similarity retrieval → answer generation with guardrails.",
+      "architecture": [
+        "Ingest docs → clean + chunk into consistent segments",
+        "Compute embeddings → store in a vector index",
+        "Query → embed → retrieve top-k chunks (cosine similarity)",
+        "Answer generation → LLM uses retrieved context only; returns answer + sources"
+      ],
+      "techStack": [
+        "Embedding model: all-mpnet-base-v2 (768-dim, normalized embeddings)",
+        "Retriever: NumPy cosine similarity (TOP_K=5)",
+        "LLM: Gemma GGUF via llama-cpp-python (ctx=4096, max_tokens=256)",
+        "PDF extraction: PyMuPDF (fitz)"
+      ],
+      "keyDecisions": [
+        "Local-first setup to control privacy and per-query cost.",
+        "Top-k retrieval + strict prompting to reduce hallucinations.",
+        "Basic relevance scoring to track and improve retrieval quality."
+      ],
+      "results": [
+        "88% answer relevance score."
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/Entropic-Technologies/Rag_Test"
+        }
+      ],
+      "improveNext": [
+        "Add reranking (cross-encoder) to improve precision on near-duplicate chunks.",
+        "Introduce hybrid search (BM25 + vector) for better recall on rare terms.",
+        "Add caching + incremental indexing for large document sets."
+      ]
+    }
+  },
+  {
+    "slug": "visionmap",
+    "title": "VisionMap",
+    "period": "Jan 2025 – Mar 2025",
+    "tags": [
+      "GenAI",
+      "3D",
+      "Product"
+    ],
+    "proof": "AI-powered video tour generator (Unity + RunwayML).",
+    "oneLiner": "3D Earth interface that generates narrated video tours from prompts using an AI media pipeline.",
+    "stack": [
+      "Unity",
+      "Python",
+      "OpenAI API",
+      "RunwayML"
+    ],
+    "caseStudy": {
+      "overview": "VisionMap combines an interactive 3D globe with an AI pipeline that produces location-based video tours. Users can select a region and generate a cohesive storyline and visuals.",
+      "problem": "Creating engaging, location-based video content takes time and specialized tools.",
+      "solution": "I integrated Unity (3D experience) with Python services and AI APIs to generate scripts, scene plans, and rendered video outputs.",
+      "architecture": [
+        "Unity front-end selects location + prompt",
+        "Python orchestrator calls LLM for script + structure",
+        "RunwayML generates/edits visuals → stitches final video"
+      ],
+      "techStack": [
+        "Unity for 3D interaction",
+        "Python orchestration",
+        "OpenAI API + RunwayML"
+      ],
+      "keyDecisions": [
+        "Pipeline orchestration to keep creative steps deterministic and debuggable.",
+        "Separation of concerns: Unity UX vs backend generation."
+      ],
+      "results": [
+        "Render Time: 30s"
+      ],
+      "links": [
+      ],
+      "improveNext": [
+        "Add caching for reusable assets and rerun-at-step to reduce iteration time.",
+        "Add safety filtering and content constraints for production readiness."
+      ]
+    }
+  },
+  {
+    "slug": "epilepsy-seizure-detection",
+    "title": "Epilepsy Seizure Detection",
+    "period": "Sep 2023 – Jun 2024",
+    "tags": [
+      "Deep Learning",
+      "Healthcare",
+      "XAI"
+    ],
+    "proof": "82% accuracy, 85% sensitivity.",
+    "oneLiner": "Deep learning model for neonatal EEG seizure detection with explainability for clinician trust.",
+    "stack": [
+      "Python",
+      "Deep Learning",
+      "XAI"
+    ],
+    "caseStudy": {
+      "overview": "A neonatal EEG seizure detection project that combines deep learning with explainability (XAI) to produce clinically interpretable predictions.",
+      "problem": "Seizures in neonates can be subtle and hard to detect, and manual EEG review is time-intensive.",
+      "solution": "I trained a deep learning model on EEG features/signals and added an explainability layer to highlight why the model predicted a seizure event.",
+      "architecture": [
+        "EEG preprocessing → feature extraction/segmentation",
+        "Model training → evaluation with sensitivity/accuracy metrics",
+        "XAI layer → saliency/attribution visualization for interpretability"
+      ],
+      "techStack": [
+        "Python + deep learning frameworks: Tenserflow",
+        "Explainability tooling: SHAP"
+      ],
+      "keyDecisions": [
+        "Prioritized sensitivity given clinical risk profile.",
+        "Added explainability to support stakeholder trust and debugging."
+      ],
+      "results": [
+        "82% accuracy and 85% sensitivity"
+      ],
+      "links": [
+        {
+          "label": "Paper/Thesis",
+          "href": "https://drive.google.com/file/d/1nF3AtQ8REs8SECsZjoGsopL4ErgKndY-/view?usp=drive_link"
+        }
+      ],
+      "improveNext": [
+        "Add external validation on a second dataset to confirm generalization.",
+        "Calibrate outputs and quantify uncertainty for safer deployment.",
+        "Explore lightweight models for on-device inference."
+      ]
+    }
+  },
+  {
+    "slug": "ifs-therapist-assistant",
+    "title": "IFS Therapist Assistant",
+    "period": "Feb 2025 – Apr 2025",
+    "tags": [
+      "GenAI",
+      "Product",
+      "Safety"
+    ],
+    "proof": "11-step guided IFS flow with automated step progression and safety flagging.",
+    "oneLiner": "Streamlit-based assistant that guides users through structured IFS sessions with safety checks and session management.",
+    "stack": [
+      "Streamlit",
+      "OpenAI",
+      "Pydantic"
+    ],
+    "caseStudy": {
+      "overview": "A Streamlit application that simulates Internal Family Systems (IFS) sessions through a structured 11-step flow. It manages session state, checks step completion automatically, and flags sensitive content to keep interactions safer.",
+      "problem": "Self-guided therapy-style tools can become unstructured and potentially risky without clear boundaries, progression logic, and escalation guidance.",
+      "solution": "I implemented a step-based UX with explicit session management, automated step completion checks, and a safety layer that flags sensitive content and reinforces disclaimers.",
+      "architecture": [
+        "User input → safety/content flag check",
+        "LLM response (gpt-4o-2024-08-06) → step completion check",
+        "Session state tracking (thread_id, current_step, timer) → UI progress indicators + warnings"
+      ],
+      "techStack": [
+        "Streamlit UI (chat + step indicators + session timer)",
+        "OpenAI API (gpt-4o-2024-08-06) with thread/session persistence",
+        "Pydantic validation for structured checks",
+        "Vector store usage for step-wise context"
+      ],
+      "keyDecisions": [
+        "Hard-coded 11-step IFS structure to keep sessions coherent and testable.",
+        "Explicit safety flagging + disclaimers to reduce misuse risk.",
+        "Session commands (/new) and thread IDs to support continuity without confusing users."
+      ],
+      "results": [
+        "Implemented end-to-end guided flow across 11 IFS steps with automatic progression logic.",
+        "Added safety flagging and professional-help guidance prompts."
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/Entropic-Technologies/Ifs-therapist"
+        }
+      ],
+      "improveNext": [
+        "Add offline safety resources and clearer crisis-routing UX.",
+        "Add an automated test suite for step transitions across edge cases.",
+        "Add analytics for drop-off points to improve completion rate."
+      ]
+    }
+  },
+  {
+    "slug": "spectrumsense-ai",
+    "title": "SpectrumSense AI",
+    "period": "Sep 2024 – Oct 2024",
+    "tags": [
+      "Signal Processing",
+      "Deep Learning",
+      "Product"
+    ],
+    "proof": "RF modulation classification + anomaly detection on RadioML 2016.10a (11 modulation types, 220,000+ samples).",
+    "oneLiner": "RF signal analysis system: I/Q → spectrogram → CNN modulation classifier + autoencoder anomaly detector with a Streamlit UI.",
+    "stack": [
+      "TensorFlow/Keras",
+      "NumPy",
+      "SciPy",
+      "Streamlit",
+      "scikit-learn"
+    ],
+    "caseStudy": {
+      "overview": "SpectrumSense AI analyzes RF I/Q samples by converting them into spectrograms and running two deep learning models: a CNN for multi-class modulation classification and a convolutional autoencoder for anomaly detection.",
+      "problem": "RF environments are noisy and dynamic. Distinguishing modulation schemes and detecting anomalies/interference is hard with brittle heuristics, especially across varying SNR conditions.",
+      "solution": "I built a spectrogram-based pipeline with two dedicated models and wrapped it in a Streamlit app for interactive upload, visualization, and inference.",
+      "architecture": [
+        "I/Q input (.npy) → STFT spectrogram generation → log/normalization preprocessing",
+        "CNN classifier → modulation probabilities across supported classes",
+        "Autoencoder → reconstruction loss; anomaly flagged if loss > threshold (e.g., 0.05)",
+        "Streamlit UI → upload + show spectrogram + predictions + anomaly score"
+      ],
+      "techStack": [
+        "TensorFlow/Keras for model training and inference",
+        "NumPy + SciPy for signal processing (STFT) and preprocessing",
+        "Streamlit for the interactive UI",
+        "Dataset: RadioML 2016.10a (11 modulation types, SNR -20dB to +18dB)"
+      ],
+      "keyDecisions": [
+        "Spectrogram representation for visual debuggability and CNN compatibility.",
+        "Separate anomaly detector (autoencoder) to avoid conflating rare events with class labels.",
+        "Simple thresholding on reconstruction loss for transparent anomaly logic."
+      ],
+      "results": [
+        "Trained on RadioML 2016.10a (11 modulation classes, 220,000+ samples across SNR levels).",
+        "Implemented anomaly detection via reconstruction loss with a configurable threshold (default 0.05)."
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/Entropic-Technologies/SpectrumSense-AI"
+        }
+      ],
+      "improveNext": [
+        "Add SDR integration for live streaming input.",
+        "Quantize models for edge deployment and faster inference.",
+        "Add calibration/uncertainty to make predictions more trustworthy at low SNR."
+      ]
+    }
+  }
+]
