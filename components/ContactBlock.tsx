@@ -1,46 +1,82 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { SITE, SOCIALS } from "@/lib/content";
+import { useState } from "react";
+import { SITE } from "@/lib/content";
 import { Phone, Linkedin, Mail, Send } from "lucide-react";
 
 const WHATSAPP_NUMBER = "923205299646"; // Pakistan number (no +)
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+}
+
 export function ContactBlock() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState(""); // optional
+  const [email, setEmail] = useState(""); // REQUIRED now (valid email)
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const waLink = useMemo(() => {
-    const text =
-      `Hi Salman,%0A%0A` +
-      `Name: ${name || "-"}%0A` +
-      `Email: ${email || "-"}%0A` +
-      `Subject: ${subject || "-"}%0A%0A` +
-      `${message || ""}`;
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(decodeURIComponent(text))}`;
-  }, [name, email, subject, message]);
+  const onSend = async () => {
+    setErrorMsg("");
+    setStatus("idle");
 
-  const onSend = () => {
-    if (!name.trim() || !message.trim()) return;
-    window.open(waLink, "_blank", "noopener,noreferrer");
+    // Client-side validation (fast feedback)
+    if (!name.trim()) return setErrorMsg("Name is required.");
+    if (!isValidEmail(email)) return setErrorMsg("A valid email is required.");
+    if (!message.trim() || message.trim().length < 10) return setErrorMsg("Message is too short.");
+
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          company: "" // honeypot for bots
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        setErrorMsg(data?.error || "Failed to send. Try again.");
+        return;
+      }
+
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Try again.");
+    }
   };
+
+  const emailOk = isValidEmail(email);
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {/* Left card */}
       <div className="rounded-3xl border border-ink-200 bg-ink-50 p-7 shadow-soft">
-        <h3 className="text-4xl font-semibold tracking-tight text-ink-950">
-          Contact Me
-        </h3>
+        <h3 className="text-4xl font-semibold tracking-tight text-ink-950">Contact Me</h3>
 
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-700">
           I read every message. If you’re hiring, collaborating, or want help shipping an AI product, send me a note.
         </p>
 
-        <p className="mt-8 text-xs text-ink-500">Does not send emails automatically.</p>
+        <p className="mt-8 text-xs text-ink-500">
+          Form sends directly to my inbox. You can also reach me here:
+        </p>
 
         <div className="mt-3">
           <p className="text-sm font-semibold text-ink-900">Write me on my social networks</p>
@@ -90,10 +126,11 @@ export function ContactBlock() {
             placeholder="Name *"
             className="h-12 rounded-2xl bg-white/10 px-4 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
           />
+
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email Address (optional)"
+            placeholder="Email Address *"
             className="h-12 rounded-2xl bg-white/10 px-4 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
           />
         </div>
@@ -113,13 +150,16 @@ export function ContactBlock() {
           className="mt-4 w-full rounded-2xl bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
         />
 
+        {errorMsg ? <p className="mt-3 text-sm text-red-300">{errorMsg}</p> : null}
+        {status === "sent" ? <p className="mt-3 text-sm text-green-300">Message sent.</p> : null}
+
         <button
           onClick={onSend}
-          disabled={!name.trim() || !message.trim()}
+          disabled={status === "sending" || !name.trim() || !emailOk || !message.trim()}
           className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-red-700 px-6 py-3 text-sm font-semibold hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           <Send className="h-4 w-4" />
-          Send Message
+          {status === "sending" ? "Sending..." : "Send Message"}
         </button>
       </div>
     </div>
