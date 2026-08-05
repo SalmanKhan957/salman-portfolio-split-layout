@@ -34,7 +34,7 @@ Edit these files:
 - `content/highlights.json`
 
 ### Replace resume
-Replace `public/resume.pdf` with your actual resume (keep the same filename).
+Replace `public/Salman's CV.pdf` with your actual resume (keep the same filename).
 
 ---
 
@@ -89,6 +89,6 @@ If your `package.json` has `"type": "module"`, PostCSS config must be ESM (`expo
 
 
 ## Photos (split layout)
-- Replace **public/headshot.png** (Hero image)
+- Replace **public/dp.png** (Hero image)
 - Replace **public/about.png** (About image)
 Keep filenames the same for zero-code updates.

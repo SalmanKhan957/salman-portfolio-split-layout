@@ -50,7 +50,7 @@ export default function Page() {
 
         <div className="flex justify-center md:justify-end">
           <ImageCard
-            src={SITE.images?.hero ?? "/headshot.png"}
+            src={SITE.images?.hero ?? "/dp.png"}
             alt={`${SITE.name} headshot`}
             priority
           />

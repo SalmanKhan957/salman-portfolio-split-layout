@@ -42,7 +42,7 @@ export function ResumeModal({ open, onClose }: Props) {
     // OPTIONAL: If you later add backend logging, call it here.
     // fetch("/api/resume-lead", { method: "POST", body: JSON.stringify({ email }) });
 
-    window.open("/resume.pdf", "_blank", "noopener,noreferrer");
+    window.open("/Salman's CV.pdf", "_blank", "noopener,noreferrer");
     onClose();
   };
 

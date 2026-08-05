@@ -13,7 +13,7 @@
     "ogImage": "/og"
   },
   "images": {
-    "hero": "/headshot.png",
+    "hero": "/dp.png",
     "about": "/about.png"
   }
 }
