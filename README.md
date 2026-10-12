@@ -55,7 +55,7 @@ Open http://localhost:3000 (resume at http://localhost:3000/resume).
 - **Collapsible timeline entries** — keyboard operable (`aria-expanded` / `aria-controls`); “Expand all / Collapse all”.
 - **Skills radar + meters** — dependency-free SVG, with an sr-only data table.
 - **Download CV (PDF)** and **Print / Save as PDF** (print CSS forces every entry open and strips site chrome).
-- **Dark mode** toggle in the header; the choice persists in `localStorage` (`theme`) and otherwise follows the OS.
+- **Dark mode** toggle in the header. The site defaults to light; dark applies only after the visitor picks it, and the choice persists in `localStorage` (`theme`).
 
 ---
 
