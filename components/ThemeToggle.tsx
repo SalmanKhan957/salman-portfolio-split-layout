@@ -10,28 +10,15 @@ function applyTheme(dark: boolean) {
 }
 
 /**
- * Dark-mode toggle. Preference persists in localStorage ("light" | "dark");
- * with no stored preference the OS setting is followed and live-updated.
- * app/layout.tsx applies the class before first paint to avoid a flash.
+ * Dark-mode toggle. The site defaults to light; dark applies only when the
+ * visitor picks it here, and the choice persists in localStorage ("light" | "dark").
+ * app/layout.tsx applies the stored class before first paint to avoid a flash.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   const [dark, setDark] = useState<boolean | null>(null);
 
   useEffect(() => {
     setDark(document.documentElement.classList.contains("dark"));
-
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = (e: MediaQueryListEvent) => {
-      let stored: string | null = null;
-      try {
-        stored = localStorage.getItem(STORAGE_KEY);
-      } catch {}
-      if (stored) return; // explicit choice wins over OS changes
-      applyTheme(e.matches);
-      setDark(e.matches);
-    };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   const toggle = () => {

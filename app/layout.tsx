@@ -52,8 +52,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     }
   };
 
-  // Applies the stored/OS theme before first paint to avoid a flash of light theme.
-  const themeInit = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
+  // Default is light. Dark applies only when the visitor chose it via the toggle
+  // (persisted in localStorage); applied before first paint to avoid a flash.
+  const themeInit = `(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark");}catch(e){}})();`;
 
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
