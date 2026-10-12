@@ -28,7 +28,19 @@ export function InlineExperience({ items }: { items: Experience[] }) {
             <span className="mt-2 h-2.5 w-2.5 rounded-sm bg-ink-900" aria-hidden />
             <div className="leading-relaxed">
               <div>
-                <span className="font-semibold">{e.company}</span>: {e.title}.
+                {e.url ? (
+                  <a
+                    href={e.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold underline-offset-4 hover:underline"
+                  >
+                    {e.company}
+                  </a>
+                ) : (
+                  <span className="font-semibold">{e.company}</span>
+                )}
+                : {e.title}.
               </div>
               <div className="text-ink-500">
                 ({Range(e.start, e.end)})

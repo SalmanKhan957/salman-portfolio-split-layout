@@ -1,15 +1,15 @@
 {
   "name": "Salman Mubashir",
-  "role": "AI Engineer / AI Developer",
-  "location": "Lahore, Pakistan",
+  "role": "AI & Full-Stack Engineer",
+  "location": "Riyadh, Saudi Arabia",
   "email": "saiman.mubasher@gmail.com",
-  "linkedin": "https://linkedin.com/in/salman-mubashir-6175012b9",
+  "linkedin": "https://www.linkedin.com/in/salman-mubashir",
   "headline": "I build production-grade AI systems and focus on clean architecture, measurable outcomes, and practical deployments.",
-  "summary": "AI Engineer with hands-on experience shipping NLP/classification, RAG pipelines, and automation systems. I focus on clean architecture, measurable outcomes, and practical deployments \u2014 not demos.",
+  "summary": "AI & Full-Stack Engineer with hands-on experience shipping NLP/classification, RAG pipelines, and automation systems. I focus on clean architecture, measurable outcomes, and practical deployments — not demos.",
   "seo": {
     "siteUrl": "https://salman-mubashir.site",
-    "title": "Salman Mubashir \u2014 AI Engineer",
-    "description": "AI Engineer building production-grade RAG, automation pipelines, and full-stack GenAI products. Recruiter-friendly portfolio with case studies and measurable impact.",
+    "title": "Salman Mubashir — AI & Full-Stack Engineer",
+    "description": "AI & Full-Stack Engineer building production-grade RAG, automation pipelines, and GenAI products. Portfolio with case studies, an interactive resume, and measurable impact.",
     "ogImage": "/og"
   },
   "images": {

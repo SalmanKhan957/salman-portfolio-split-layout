@@ -1,5 +1,10 @@
 [
   {
+    "label": "Sub-3% error rate, 0 fabricated citations",
+    "note": "AlTahqeeq",
+    "type": "quality"
+  },
+  {
     "label": "70% faster email templates",
     "note": "GluonAI",
     "type": "metric"

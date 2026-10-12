@@ -3,10 +3,11 @@ import { Container } from "@/components/Container";
 import { Nav } from "@/components/Nav";
 import { MobileNav } from "@/components/MobileNav";
 import { Button } from "@/components/Button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
   return (
-    <header className="sticky top-50 z-50 border-b border-ink-100 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-ink-100 bg-white/80 backdrop-blur print:hidden">
       <Container className="flex h-20 items-center justify-between">
         <div className="flex items-center gap-3">
           <MobileNav />
@@ -18,6 +19,7 @@ export function Header() {
         <Nav />
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button href="/#contact" variant="primary" className="inline-flex">
             Contact
           </Button>
