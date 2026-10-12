@@ -6,7 +6,7 @@ import { Button } from "@/components/Button";
 
 export function Header() {
   return (
-    <header className="sticky top-50 z-50 border-b border-ink-100 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-ink-100 bg-white/80 backdrop-blur print:hidden">
       <Container className="flex h-20 items-center justify-between">
         <div className="flex items-center gap-3">
           <MobileNav />

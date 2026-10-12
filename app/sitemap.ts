@@ -4,9 +4,10 @@ import { SITE, PROJECTS } from "@/lib/content";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.seo.siteUrl.replace(/\/$/, "");
 
-    const staticRoutes = [
+  const staticRoutes = [
     "",
-    "/projects"
+    "/projects",
+    "/resume"
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date()
