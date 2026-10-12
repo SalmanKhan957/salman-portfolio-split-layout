@@ -1,4 +1,4 @@
-import { SITE, PROJECTS, EXPERIENCE, AWARDS, SKILLS, EDUCATION } from "@/lib/content";
+import { SITE, RESUME, PROJECTS, EXPERIENCE, AWARDS, SKILLS, EDUCATION } from "@/lib/content";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { ProofStrip } from "@/components/ProofStrip";
@@ -28,7 +28,7 @@ export default function Page() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-700">
-            <span className="font-semibold text-ink-900">AI Engineer</span> — I turn data into intelligent products that ship, scale, and create measurable impact.
+            <span className="font-semibold text-ink-900">{RESUME.basics.label}</span> — I turn data into intelligent products that ship, scale, and create measurable impact.
           </p>
 
           <div className="mt-10 flex items-center gap-3">

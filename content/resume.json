@@ -1,0 +1,249 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "version": "2026-10-08",
+    "source": "Salman_CV.pdf (Microsoft Word export, 2026-10-08)",
+    "pdf": "/resume.pdf",
+    "pdfFilename": "Salman_Mubashir_CV.pdf",
+    "privacy": {
+      "showPhone": false
+    },
+    "verify": [
+      "basics.summary is derived from the CV headline and experience; the CV itself has no summary paragraph.",
+      "skills[].level and skills[].score are self-assessed estimates, not stated in the CV. Adjust freely.",
+      "work[].keywords were inferred from bullet text (the CV lists tools only for projects).",
+      "work dates overlap (Al-Tahqeeq Mar 2026-, Vyka Mar-May 2026, Paragon Jul 2026-). Confirm these are concurrent roles.",
+      "basics.profiles LinkedIn URL taken from the CV (/in/salman-mubashir); the previous site used /in/salman-mubashir-6175012b9.",
+      "The previous experience.json listed a Trainee Engineer role (Solar Supplies & Services, May-Jul 2023) that the CV omits; it was dropped."
+    ]
+  },
+  "basics": {
+    "name": "Salman Mubashir",
+    "label": "AI & Full-Stack Engineer",
+    "headline": "AI & Full-Stack Engineer | Building Scalable Automation Systems & GenAI",
+    "email": "saiman.mubasher@gmail.com",
+    "phone": "+966 507467651",
+    "url": "https://salman-mubashir.site/",
+    "summary": "AI & Full-Stack Engineer with two years of shipping production GenAI systems: source-grounded RAG answer engines, fine-tuned NLP models, and automation pipelines, delivered end to end from data and model to API and web application.",
+    "location": {
+      "city": "Riyadh",
+      "region": "",
+      "countryCode": "SA",
+      "label": "Riyadh, KSA"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "salman-mubashir",
+        "url": "https://www.linkedin.com/in/salman-mubashir"
+      },
+      {
+        "network": "Website",
+        "username": "salman-mubashir.site",
+        "url": "https://salman-mubashir.site/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Al-Tahqeeq",
+      "position": "CTO & Lead Developer",
+      "url": "http://altahqeeq.com/",
+      "location": "Remote",
+      "startDate": "2026-03",
+      "endDate": null,
+      "summary": "Source-grounded AI answer engine for authenticated Islamic Q&A.",
+      "highlights": [
+        "Architected and built AlTahqeeq end to end, a source-grounded AI answer engine for authenticated Islamic Q&A that cites every claim to its original source.",
+        "Designed and developed the responsive web application and a citation-linked knowledge base of hadiths, validated at a sub-3% error rate with zero fabricated citations."
+      ],
+      "keywords": ["Generative AI", "RAG Pipelines", "Arabic NLP", "Knowledge Base", "Next.js", "Full-Stack"]
+    },
+    {
+      "name": "Paragon",
+      "position": "Full-Stack Engineer",
+      "url": "https://www.xtremeadventures100.com/",
+      "location": "Remote",
+      "startDate": "2026-07",
+      "endDate": null,
+      "summary": "XtremeAdventures and companion web applications.",
+      "highlights": [
+        "Developed XtremeAdventures and companion web applications, deploying dynamic registration engines, interactive leaderboards/mapping, and WhatsApp API payment verification to optimize user experience and conversion rates."
+      ],
+      "keywords": ["Web Applications", "WhatsApp API", "Payments", "Maps", "Full-Stack"]
+    },
+    {
+      "name": "Vyka Diamonds",
+      "position": "Full-Stack Engineer",
+      "url": "https://vykadiamonds.com/",
+      "location": "Remote",
+      "startDate": "2026-03",
+      "endDate": "2026-05",
+      "summary": "Responsive Shopify storefront with integrated payments and inventory sync.",
+      "highlights": [
+        "Engineered a responsive Shopify storefront using custom Liquid, JavaScript, and HTML/CSS, optimizing Core Web Vitals and asset delivery to boost mobile page load speeds and user retention.",
+        "Integrated secure payment gateways, third-party REST APIs, and automated inventory synchronization pipelines to streamline store operations and backend data flows."
+      ],
+      "keywords": ["Shopify", "Liquid", "JavaScript", "HTML/CSS", "REST APIs", "Payments", "Core Web Vitals"]
+    },
+    {
+      "name": "Entropic",
+      "position": "AI Developer",
+      "url": "",
+      "location": "Islamabad, Pakistan",
+      "startDate": "2024-10",
+      "endDate": "2026-02",
+      "summary": "Production NLP, classification, generative AI and RAG systems.",
+      "highlights": [
+        "Designed, deployed, and fine-tuned machine learning models for NLP, classification, and generative AI, optimizing foundation models with domain-specific data for production use cases.",
+        "Engineered data pipelines for preprocessing, cleaning, and transforming large datasets for model training and inference.",
+        "Built and deployed RAG pipelines using embeddings, vector search, and LLMs for document intelligence and automated knowledge retrieval.",
+        "Developed FastAPI/Flask APIs integrating AI models into web applications and containerized services on Azure/GCP with Docker."
+      ],
+      "keywords": ["NLP", "Fine-tuning", "Generative AI", "RAG Pipelines", "Embeddings", "Vector Search", "FastAPI", "Flask", "Docker", "Azure", "GCP", "Data Pipelines"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "FAST NUCES (National University of Computer and Emerging Sciences)",
+      "url": "https://www.nu.edu.pk/",
+      "area": "Electrical Engineering (Computer Engineering Major)",
+      "studyType": "BSc",
+      "location": "Islamabad, Pakistan",
+      "startDate": "2020-09",
+      "endDate": "2024-06",
+      "score": "CGPA 3.5",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Gold Medalist, Spring 2023 Semester",
+      "date": "2023-06",
+      "awarder": "FAST NUCES, Islamabad",
+      "summary": "Medal for the highest GPA score."
+    },
+    {
+      "title": "Gold Medalist, Fall 2022 Semester",
+      "date": "2023-01",
+      "awarder": "FAST NUCES, Islamabad",
+      "summary": "Medal for the highest GPA score."
+    }
+  ],
+  "skills": [
+    {
+      "name": "AI & ML Engineering",
+      "level": "Expert",
+      "score": 92,
+      "keywords": ["Generative AI", "RAG Pipelines", "Agentic Workflows", "Arabic NLP", "PyTorch", "LangChain", "Vector Databases (Qdrant / PGvector)", "Prompt Engineering"]
+    },
+    {
+      "name": "Full-Stack Development",
+      "level": "Advanced",
+      "score": 85,
+      "keywords": ["Python (FastAPI / Django)", "TypeScript", "React", "Next.js", "Node.js", "REST / gRPC APIs"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "Intermediate",
+      "score": 70,
+      "keywords": ["GCP", "AWS", "Azure", "Docker", "Kubernetes", "Terraform", "CI/CD Pipelines"]
+    },
+    {
+      "name": "Databases",
+      "level": "Advanced",
+      "score": 80,
+      "keywords": ["PostgreSQL", "Supabase"]
+    },
+    {
+      "name": "Tools & Frameworks",
+      "level": "Advanced",
+      "score": 82,
+      "keywords": ["Git", "Shopify", "N8N", "Hugging Face", "Postman", "Scikit-learn", "Keras", "Pandas", "NumPy", "TensorFlow", "Selenium WebDriver"]
+    },
+    {
+      "name": "Soft Skills",
+      "keywords": ["Logical reasoning", "Collaboration"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "projects": [
+    {
+      "name": "GluonAI",
+      "slug": "gluon-ai",
+      "url": "https://app.getgluon.ai/login",
+      "startDate": "2025-04",
+      "endDate": "2025-07",
+      "description": "GenAI backend that generates context-aware, on-brand email templates with tiered subscriptions.",
+      "highlights": [
+        "Developed FastAPI backend leveraging GenAI to create context-aware email templates using brand data, reducing template creation time by more than 70%.",
+        "Designed RESTful API architecture integrating PostgreSQL, Supabase Auth, and Stripe for tiered subscription management.",
+        "Implemented scalable microservices architecture with Docker containerization."
+      ],
+      "keywords": ["FastAPI", "Python", "Supabase", "PostgreSQL", "Docker", "Stripe"]
+    },
+    {
+      "name": "Tenderz Scraper",
+      "slug": "tenderz-scraper",
+      "url": "",
+      "startDate": "2025-06",
+      "endDate": "2025-10",
+      "description": "Scalable scraping and AI document-processing pipeline for government tender data.",
+      "highlights": [
+        "Engineered scalable web scraping infrastructure using Selenium to extract real-time tender data from 40+ government platforms, processing 1,000+ tender documents daily.",
+        "Built AI-powered document processing pipeline to parse and summarize unstructured PDF/DOCX files into structured JSON/CSV outputs.",
+        "Implemented fault-tolerant backend with automated error handling, duplicate detection, and chunk-based processing for large datasets."
+      ],
+      "keywords": ["Pipelines", "Selenium WebDriver", "Azure Virtual Environment", "OpenAI API", "Data Processing"]
+    },
+    {
+      "name": "Retrieval-Augmented Generation (RAG) System for Document QA",
+      "slug": "rag-document-qa",
+      "url": "",
+      "startDate": "2025-10",
+      "endDate": "2025-12",
+      "description": "Local-first RAG pipeline for grounded PDF question answering.",
+      "highlights": [
+        "Built end-to-end RAG pipeline for intelligent PDF-based Q&A using local LLM deployment, achieving 88% answer relevance score.",
+        "Implemented document chunking, sentence-transformer embeddings, and cosine similarity retrieval with vector store.",
+        "Optimized prompt engineering for context-aware responses and designed binary storage architecture for efficient embedding persistence."
+      ],
+      "keywords": ["Local LLMs", "Prompt Engineering", "Pandas", "NumPy"]
+    },
+    {
+      "name": "VisionMap",
+      "slug": "visionmap",
+      "url": "",
+      "startDate": "2025-01",
+      "endDate": "2025-03",
+      "description": "AI-powered video tour generator driven from a 3D Earth interface.",
+      "highlights": [
+        "Built AI-powered video tour generator with 3D Earth interface.",
+        "Developed Python backend orchestrating LLM for location context retrieval and RunwayML API for generative video synthesis.",
+        "Implemented API layer connecting Unity frontend with AI services for real-time tour generation."
+      ],
+      "keywords": ["OpenAI API", "RunwayML API", "Unity", "Python", "HTML"]
+    },
+    {
+      "name": "Epilepsy Seizures Detection in Neo-natal EEG using Explainable AI",
+      "slug": "epilepsy-seizure-detection",
+      "url": "",
+      "type": "Final Year Project",
+      "startDate": "2023-09",
+      "endDate": "2024-06",
+      "description": "Deep learning seizure detector for neonatal EEG with explainable predictions.",
+      "highlights": [
+        "Built a deep learning model for neonatal EEG seizure detection with robust signal preprocessing and integrated Explainable AI (XAI) for interpretable, clinically reliable predictions, achieving 82% accuracy with 85% sensitivity."
+      ],
+      "keywords": ["OpenBCI Ganglion", "Linux", "Python", "Google AI"]
+    }
+  ],
+  "certificates": [],
+  "publications": [],
+  "references": []
+}

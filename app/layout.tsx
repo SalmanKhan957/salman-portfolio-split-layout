@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { SITE } from "@/lib/content";
+import { SITE, RESUME } from "@/lib/content";
 import { ResumeGateProvider } from "@/components/ResumeGate";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -36,18 +36,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const { basics } = RESUME;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: SITE.name,
-    jobTitle: SITE.role,
-    email: SITE.email,
+    name: basics.name,
+    jobTitle: basics.label,
+    email: basics.email,
     url: SITE.seo.siteUrl,
-    sameAs: [SITE.linkedin],
+    sameAs: basics.profiles.map((p) => p.url),
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lahore",
-      addressCountry: "PK"
+      addressLocality: basics.location.city,
+      addressCountry: basics.location.countryCode
     }
   };
 
