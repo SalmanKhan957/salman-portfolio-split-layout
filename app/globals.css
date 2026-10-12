@@ -31,3 +31,89 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---------- Print: clean, single-column resume ---------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  /* Hide site chrome and interactive controls. Tailwind's print:hidden covers
+     the rest at the component level. */
+  header,
+  footer,
+  nav,
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  .resume-print {
+    padding: 0 !important;
+  }
+
+  .resume-print .mx-auto {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Force every collapsible entry open regardless of UI state. */
+  .resume-print .resume-entry-body {
+    grid-template-rows: 1fr !important;
+  }
+  .resume-print .resume-entry-body > * {
+    visibility: visible !important;
+  }
+
+  /* Flatten cards: no shadows, thin borders, tighter spacing. */
+  .resume-print .shadow-soft {
+    box-shadow: none !important;
+  }
+  .resume-print .rounded-2xl,
+  .resume-print .rounded-3xl {
+    border-radius: 6px !important;
+  }
+  .resume-print .space-y-14 > * + * {
+    margin-top: 1.4rem !important;
+  }
+  .resume-print .space-y-5 > * + * {
+    margin-top: 0.6rem !important;
+  }
+
+  /* Links: keep them readable and expose external URLs. */
+  .resume-print a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  .resume-print a[href^="http"]:not([href*="salman-mubashir.site"])::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Avoid orphaned headings and split cards. */
+  .resume-print h2,
+  .resume-print h3 {
+    break-after: avoid;
+  }
+  .resume-print article,
+  .resume-print li,
+  .resume-print .break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  mark {
+    background: transparent !important;
+    color: inherit !important;
+    font-weight: 600;
+  }
+}
