@@ -150,13 +150,13 @@ export function ContactBlock() {
           className="mt-4 w-full rounded-2xl bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 border border-white/10 focus:border-white/30 outline-none"
         />
 
-        {errorMsg ? <p className="mt-3 text-sm text-red-300">{errorMsg}</p> : null}
-        {status === "sent" ? <p className="mt-3 text-sm text-green-300">Message sent.</p> : null}
+        {errorMsg ? <p className="mt-3 text-sm text-red-300 dark:text-red-700">{errorMsg}</p> : null}
+        {status === "sent" ? <p className="mt-3 text-sm text-green-300 dark:text-green-700">Message sent.</p> : null}
 
         <button
           onClick={onSend}
           disabled={status === "sending" || !name.trim() || !emailOk || !message.trim()}
-          className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-red-700 px-6 py-3 text-sm font-semibold hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-red-700 px-6 py-3 text-sm font-semibold text-white hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition dark:text-ink-950"
         >
           <Send className="h-4 w-4" />
           {status === "sending" ? "Sending..." : "Send Message"}

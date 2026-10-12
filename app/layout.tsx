@@ -52,9 +52,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     }
   };
 
+  // Applies the stored/OS theme before first paint to avoid a flash of light theme.
+  const themeInit = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans">
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[200] focus:rounded-full focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-sm focus:text-white"

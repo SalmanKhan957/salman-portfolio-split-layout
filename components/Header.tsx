@@ -3,6 +3,7 @@ import { Container } from "@/components/Container";
 import { Nav } from "@/components/Nav";
 import { MobileNav } from "@/components/MobileNav";
 import { Button } from "@/components/Button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
   return (
@@ -18,6 +19,7 @@ export function Header() {
         <Nav />
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Button href="/#contact" variant="primary" className="inline-flex">
             Contact
           </Button>
