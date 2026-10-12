@@ -120,6 +120,7 @@ export function ResumeView({ resume, caseStudies }: Props) {
               {resume.work.map((w, i) => {
                 const entry = workEntries[i];
                 if (!isVisible(entry)) return null;
+                const caseStudy = w.slug && caseStudies[w.slug] ? `/projects/${w.slug}` : null;
                 return (
                   <li key={entry.id}>
                     <TimelineEntry
@@ -137,6 +138,16 @@ export function ResumeView({ resume, caseStudies }: Props) {
                       query={query}
                       activeSkill={activeSkill}
                       onSkillClick={toggleSkill}
+                      footer={
+                        caseStudy ? (
+                          <Link
+                            href={caseStudy}
+                            className="text-sm text-ink-700 underline decoration-ink-200 underline-offset-4 hover:text-ink-900 hover:decoration-ink-400"
+                          >
+                            Read the case study →
+                          </Link>
+                        ) : undefined
+                      }
                     />
                   </li>
                 );

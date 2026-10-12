@@ -1,5 +1,69 @@
 [
   {
+    "slug": "altahqeeq",
+    "title": "AlTahqeeq",
+    "period": "Mar 2026 – Present",
+    "tags": [
+      "GenAI",
+      "RAG",
+      "Full-stack"
+    ],
+    "proof": "Sub-3% error rate with zero fabricated citations on a citation-linked hadith knowledge base.",
+    "oneLiner": "Source-grounded AI answer engine for authenticated Islamic Q&A that cites every claim to its original source.",
+    "stack": [
+      "Next.js",
+      "Python API",
+      "RAG",
+      "Vector search",
+      "Arabic NLP"
+    ],
+    "caseStudy": {
+      "overview": "AlTahqeeq is a source-grounded answer engine for Islamic questions. Answers are assembled only from an authenticated, citation-linked knowledge base of hadiths, and every claim links back to its original source so readers can verify rather than trust. Built end to end as CTO & Lead Developer: product direction, architecture, the retrieval pipeline, the knowledge base, and the responsive web application.",
+      "problem": "General-purpose chatbots answer religious questions fluently but cannot be trusted: they paraphrase loosely, blend sources, and invent citations. For Islamic Q&A, where the authenticity of a narration is the whole point, an unsourced or mis-cited answer is worse than no answer.",
+      "solution": "A retrieval-first design. Questions are answered only from the curated corpus; generation is constrained to the retrieved passages, and each statement carries a reference to the source it came from. Validation measured a sub-3% error rate with zero fabricated citations.",
+      "architecture": [
+        "Ingestion → authenticated hadith sources parsed, normalized and chunked with their citation metadata preserved end to end.",
+        "Index → embeddings + vector search over the knowledge base, tuned for Arabic text and transliterated queries.",
+        "Answer → LLM generation constrained to retrieved passages; every claim is linked to its citation.",
+        "Guardrails → citations are checked against the corpus before display; questions without supporting sources are declined rather than guessed.",
+        "Web app → responsive Next.js front end over the answer API."
+      ],
+      "techStack": [
+        "Frontend: Next.js (responsive web application)",
+        "Backend: Python API serving retrieval + generation",
+        "Retrieval: embeddings + vector database",
+        "Data: citation-linked hadith knowledge base"
+      ],
+      "keyDecisions": [
+        "Retrieval first, generation second: the model may only restate what the corpus supports, which is what makes zero fabricated citations achievable.",
+        "Citations as a first-class data model: every chunk carries its source reference through the whole pipeline, so the UI links each claim without post-hoc matching.",
+        "Error rate, not fluency, as the product metric: an answer that reads well but mis-cites is a failure.",
+        "Single owner across data, retrieval and UI to keep the citation contract consistent end to end."
+      ],
+      "results": [
+        "Sub-3% error rate on validated answers.",
+        "Zero fabricated citations.",
+        "Responsive web application and citation-linked hadith knowledge base shipped end to end."
+      ],
+      "links": [
+        {
+          "label": "AlTahqeeq",
+          "href": "http://altahqeeq.com/"
+        }
+      ],
+      "improveNext": [
+        "Publish the evaluation set and grading method so the error rate is reproducible.",
+        "Add hybrid retrieval (BM25 + vector) and cross-encoder reranking for rare terms and transliterations.",
+        "Add a scholar-review workflow to flag and correct answers in production."
+      ],
+      "neededInput": [
+        "Confirm the exact stack: API framework, vector database, embedding model and LLM.",
+        "Describe the validation behind the sub-3% error rate (question-set size, who graded).",
+        "Add a screenshot or architecture diagram."
+      ]
+    }
+  },
+  {
     "slug": "gluon-ai",
     "title": "GluonAI",
     "period": "Apr 2025 – Jul 2025",

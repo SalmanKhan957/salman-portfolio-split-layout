@@ -30,6 +30,7 @@ export type ResumeBasics = {
 export type ResumeWork = {
   name: string;
   position: string;
+  slug?: string; // links to /projects/[slug] when a case study exists
   url?: string;
   location?: string;
   startDate: string; // YYYY-MM
