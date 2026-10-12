@@ -5,40 +5,39 @@
     "period": "Mar 2026 – Present",
     "tags": [
       "GenAI",
-      "RAG",
+      "Product",
       "Full-stack"
     ],
     "proof": "Sub-3% error rate with zero fabricated citations on a citation-linked hadith knowledge base.",
     "oneLiner": "Source-grounded AI answer engine for authenticated Islamic Q&A that cites every claim to its original source.",
     "stack": [
-      "Next.js",
-      "Python API",
-      "RAG",
-      "Vector search",
-      "Arabic NLP"
+      "Answer engine",
+      "Verified knowledge base",
+      "Citation checks",
+      "Web application"
     ],
     "caseStudy": {
-      "overview": "AlTahqeeq is a source-grounded answer engine for Islamic questions. Answers are assembled only from an authenticated, citation-linked knowledge base of hadiths, and every claim links back to its original source so readers can verify rather than trust. Built end to end as CTO & Lead Developer: product direction, architecture, the retrieval pipeline, the knowledge base, and the responsive web application.",
+      "overview": "AlTahqeeq is a source-grounded answer engine for Islamic questions. Every answer is assembled only from an authenticated, citation-linked knowledge base of hadiths, and each claim links back to the source it came from, so readers can verify rather than trust. Built end to end as CTO & Lead Developer: product direction, system design, the knowledge base, the answering pipeline, and the responsive web application.",
       "problem": "General-purpose chatbots answer religious questions fluently but cannot be trusted: they paraphrase loosely, blend sources, and invent citations. For Islamic Q&A, where the authenticity of a narration is the whole point, an unsourced or mis-cited answer is worse than no answer.",
-      "solution": "A retrieval-first design. Questions are answered only from the curated corpus; generation is constrained to the retrieved passages, and each statement carries a reference to the source it came from. Validation measured a sub-3% error rate with zero fabricated citations.",
+      "solution": "Answers are written only from verified material. A question is first matched against the curated corpus, the response is then composed strictly from the passages found, and every statement carries a reference to its source. Nothing is written that cannot be pointed back to a citation. Validation measured a sub-3% error rate with zero fabricated citations.",
       "architecture": [
-        "Ingestion → authenticated hadith sources parsed, normalized and chunked with their citation metadata preserved end to end.",
-        "Index → embeddings + vector search over the knowledge base, tuned for Arabic text and transliterated queries.",
-        "Answer → LLM generation constrained to retrieved passages; every claim is linked to its citation.",
-        "Guardrails → citations are checked against the corpus before display; questions without supporting sources are declined rather than guessed.",
-        "Web app → responsive Next.js front end over the answer API."
+        "Sources → authenticated hadith collections are cleaned, structured and stored with their references intact.",
+        "Matching → each question is matched against the knowledge base to find the passages that actually address it, including questions asked in Arabic or transliterated forms.",
+        "Composition → the answer is written only from the matched passages, with each claim tied to its citation.",
+        "Verification → every citation is checked against the corpus before it is shown; questions with no supporting source are declined instead of guessed.",
+        "Delivery → a responsive web application for asking, reading, and following citations through to the original text."
       ],
       "techStack": [
-        "Frontend: Next.js (responsive web application)",
-        "Backend: Python API serving retrieval + generation",
-        "Retrieval: embeddings + vector database",
-        "Data: citation-linked hadith knowledge base"
+        "Answer engine: composes responses strictly from matched, verified passages",
+        "Knowledge base: authenticated hadith corpus with a source reference on every passage",
+        "Verification layer: citations validated before display; unsupported questions declined",
+        "Web application: responsive interface for search, reading and citation follow-through"
       ],
       "keyDecisions": [
-        "Retrieval first, generation second: the model may only restate what the corpus supports, which is what makes zero fabricated citations achievable.",
-        "Citations as a first-class data model: every chunk carries its source reference through the whole pipeline, so the UI links each claim without post-hoc matching.",
+        "Verify first, write second: the system may only restate what the corpus supports, which is what makes zero fabricated citations achievable.",
+        "Citations as a first-class part of the data: every passage carries its source reference through the whole pipeline, so the interface links each claim without guesswork.",
         "Error rate, not fluency, as the product metric: an answer that reads well but mis-cites is a failure.",
-        "Single owner across data, retrieval and UI to keep the citation contract consistent end to end."
+        "Single owner across data, answering pipeline and interface to keep the citation contract consistent end to end."
       ],
       "results": [
         "Sub-3% error rate on validated answers.",
@@ -53,13 +52,8 @@
       ],
       "improveNext": [
         "Publish the evaluation set and grading method so the error rate is reproducible.",
-        "Add hybrid retrieval (BM25 + vector) and cross-encoder reranking for rare terms and transliterations.",
+        "Broaden coverage to more collections and improve matching for rare terms and transliterations.",
         "Add a scholar-review workflow to flag and correct answers in production."
-      ],
-      "neededInput": [
-        "Confirm the exact stack: API framework, vector database, embedding model and LLM.",
-        "Describe the validation behind the sub-3% error rate (question-set size, who graded).",
-        "Add a screenshot or architecture diagram."
       ]
     }
   },
@@ -280,8 +274,7 @@
       "results": [
         "Render Time: 30s"
       ],
-      "links": [
-      ],
+      "links": [],
       "improveNext": [
         "Add caching for reusable assets and rerun-at-step to reduce iteration time.",
         "Add safety filtering and content constraints for production readiness."

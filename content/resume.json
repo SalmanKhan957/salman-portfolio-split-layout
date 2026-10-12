@@ -58,7 +58,7 @@
         "Architected and built AlTahqeeq end to end, a source-grounded AI answer engine for authenticated Islamic Q&A that cites every claim to its original source.",
         "Designed and developed the responsive web application and a citation-linked knowledge base of hadiths, validated at a sub-3% error rate with zero fabricated citations."
       ],
-      "keywords": ["Generative AI", "RAG Pipelines", "Arabic NLP", "Knowledge Base", "Next.js", "Full-Stack"]
+      "keywords": ["Generative AI", "Knowledge Base", "Web Application", "Full-Stack"]
     },
     {
       "name": "Paragon",
